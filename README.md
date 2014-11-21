@@ -21,7 +21,8 @@ that the data is available in the folder "UCI HAR Dataset" located in the workin
 4. In this dataset, substitutes the activity IDs with the activity names using the file "activity_labels.txt". This is achieved using `sapply()` to find the activity name corresponding to each activity ID:
 ```R
 act_lab <- read.table("./UCI HAR Dataset/activity_labels.txt")
-activities_names <- sapply(sts[,2], function(x) act_lab[act_lab[,1] == x, 2])```
+activities_names <- sapply(sts[,2], function(x) act_lab[act_lab[,1] == x, 2])
+```
 
-  Also, modifies the columns names corresponding to the features data by replacing the parentheses with multiple dots, and then substituting two or more dots with a single dot.
+  Also, it modifies the columns names corresponding to the features data by replacing the parentheses with multiple dots, and then substituting two or more dots with a single dot.
 5. Creates a new dataset called "new_dataset" using the function `aggregate()` to group the data by Subject ID and Activity and calculates the average of each variable for each group. Transforms this dataset from wide to long form using `melt()`. The columns of the final dataset are "Activity", "Subject.ID", "Feature.Name" and "Feature.Average".
